@@ -46,7 +46,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://sleepai.com/blog/bedtime-anxiety</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sleepai.com/blog/mindfulness</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/sleep-science</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/ai-sleep</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -72,6 +87,71 @@
   </url>
   <url>
     <loc>https://sleepai.com/blog/why-cant-i-fall-asleep-when-im-tired</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/the-20-minute-wind-down-routine-that-helps-you-fall-asleep-faster</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/what-you-should-do-in-the-last-20-minutes-before-bed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/how-to-train-your-brain-to-sleep-using-a-night-routine</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/why-your-brain-wont-turn-off-at-night-and-how-to-fix-it</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/how-to-calm-racing-thoughts-before-bed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/the-science-behind-nighttime-anxiety</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/why-nighttime-is-when-overthinking-gets-worse</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/why-you-feel-more-anxious-at-night</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/the-psychology-of-bedtime-anxiety</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/what-happens-in-your-brain-when-you-fall-asleep</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/can-ai-help-you-sleep-better</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/what-is-an-ai-sleep-companion</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepai.com/blog/how-personalized-sleep-routines-improve-insomnia</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
