@@ -50,6 +50,66 @@ document.addEventListener("DOMContentLoaded", () => {
     scenes.forEach((scene) => sceneObserver.observe(scene));
   }
 
+  const upgradeClickCards = () => {
+    const cardCandidates = Array.from(
+      document.querySelectorAll(".article-card, .feature-summary-card")
+    );
+
+    cardCandidates.forEach((card) => {
+      if (card.dataset.clickCardReady === "true") return;
+
+      const links = Array.from(card.querySelectorAll("a[href]"));
+      if (!links.length) return;
+
+      const hrefs = Array.from(
+        new Set(
+          links
+            .map((link) => link.getAttribute("href"))
+            .filter((href) => typeof href === "string" && href.length > 0)
+        )
+      );
+
+      if (hrefs.length !== 1) return;
+
+      const primaryLink = links[0];
+      if (!(primaryLink instanceof HTMLAnchorElement)) return;
+
+      card.dataset.clickCardReady = "true";
+      card.classList.add("is-click-card");
+      card.tabIndex = 0;
+      card.setAttribute("role", "link");
+
+      const labelSource =
+        card.querySelector("h3 a, strong a, h3, strong") ?? primaryLink;
+      const label = labelSource?.textContent?.trim();
+      if (label) {
+        card.setAttribute("aria-label", label);
+      }
+
+      const activateCard = () => {
+        primaryLink.click();
+      };
+
+      card.addEventListener("click", (event) => {
+        if (event.target instanceof Element) {
+          if (event.target.closest("a, button, summary, input, select, textarea, label")) {
+            return;
+          }
+        }
+
+        activateCard();
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        activateCard();
+      });
+    });
+  };
+
+  upgradeClickCards();
+
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const finePointer = window.matchMedia("(pointer: fine)");
 
@@ -91,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }));
 
   const interactiveSelector =
-    "a, button, summary, .button, .store-badge-large, .feature-node, .article-card";
+    "a, button, summary, .button, .store-cta-row a, .cta-row a, .is-click-card";
 
   const setHoverState = (isHovering) => {
     trailRoot.classList.toggle("is-hovering", isHovering);
