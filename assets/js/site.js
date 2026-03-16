@@ -49,4 +49,129 @@ document.addEventListener("DOMContentLoaded", () => {
 
     scenes.forEach((scene) => sceneObserver.observe(scene));
   }
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const finePointer = window.matchMedia("(pointer: fine)");
+
+  if (prefersReducedMotion.matches || !finePointer.matches) {
+    return;
+  }
+
+  const trailRoot = document.createElement("div");
+  trailRoot.className = "cursor-trail";
+  trailRoot.setAttribute("aria-hidden", "true");
+
+  const lead = document.createElement("span");
+  lead.className = "cursor-trail-lead";
+  trailRoot.appendChild(lead);
+
+  const nodes = Array.from({ length: 7 }, (_, index) => {
+    const node = document.createElement("span");
+    node.className = "cursor-trail-node";
+    node.style.setProperty("--trail-index", String(index));
+    trailRoot.appendChild(node);
+    return node;
+  });
+
+  document.body.appendChild(trailRoot);
+  document.body.classList.add("has-cursor-trail");
+
+  const pointer = {
+    x: window.innerWidth * 0.5,
+    y: window.innerHeight * 0.5,
+    targetX: window.innerWidth * 0.5,
+    targetY: window.innerHeight * 0.5,
+    visible: false,
+    lastMoveAt: 0,
+  };
+
+  const chain = Array.from({ length: nodes.length }, () => ({
+    x: pointer.x,
+    y: pointer.y,
+  }));
+
+  const interactiveSelector =
+    "a, button, summary, .button, .store-badge-large, .feature-node, .article-card";
+
+  const setHoverState = (isHovering) => {
+    trailRoot.classList.toggle("is-hovering", isHovering);
+  };
+
+  const updatePointer = (event) => {
+    pointer.targetX = event.clientX;
+    pointer.targetY = event.clientY;
+    pointer.lastMoveAt = performance.now();
+    pointer.visible = true;
+    trailRoot.classList.add("is-visible");
+  };
+
+  document.addEventListener("pointermove", updatePointer, { passive: true });
+  const hideTrail = () => {
+    pointer.visible = false;
+    setHoverState(false);
+  };
+
+  document.addEventListener("mouseleave", hideTrail);
+  window.addEventListener("blur", hideTrail);
+  document.addEventListener("pointerdown", () => trailRoot.classList.add("is-pressed"));
+  document.addEventListener("pointerup", () => trailRoot.classList.remove("is-pressed"));
+  document.addEventListener("pointercancel", () => trailRoot.classList.remove("is-pressed"));
+
+  document.addEventListener(
+    "pointerover",
+    (event) => {
+      setHoverState(Boolean(event.target.closest(interactiveSelector)));
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "pointerout",
+    (event) => {
+      if (event.relatedTarget instanceof Element) {
+        setHoverState(Boolean(event.relatedTarget.closest(interactiveSelector)));
+      } else {
+        setHoverState(false);
+      }
+    },
+    { passive: true }
+  );
+
+  const animateTrail = () => {
+    const now = performance.now();
+    const idleFor = now - pointer.lastMoveAt;
+    const shouldShow = pointer.visible && idleFor < 140;
+
+    pointer.x += (pointer.targetX - pointer.x) * 0.24;
+    pointer.y += (pointer.targetY - pointer.y) * 0.24;
+
+    const pressScale = trailRoot.classList.contains("is-pressed") ? 0.84 : 1;
+
+    lead.style.transform = `translate3d(${pointer.x}px, ${pointer.y}px, 0) scale(${pressScale})`;
+    lead.style.opacity = shouldShow ? "1" : "0";
+
+    let anchorX = pointer.x;
+    let anchorY = pointer.y;
+
+    nodes.forEach((node, index) => {
+      const segment = chain[index];
+      segment.x += (anchorX - segment.x) * 0.32;
+      segment.y += (anchorY - segment.y) * 0.32;
+
+      anchorX = segment.x;
+      anchorY = segment.y;
+
+      const progress = 1 - index / nodes.length;
+      const scale = 0.42 + progress * 0.58;
+      const opacity = shouldShow ? 0.06 + progress * 0.22 : 0;
+
+      node.style.transform = `translate3d(${segment.x}px, ${segment.y}px, 0) scale(${scale})`;
+      node.style.opacity = opacity.toFixed(3);
+    });
+
+    trailRoot.classList.toggle("is-visible", shouldShow);
+    requestAnimationFrame(animateTrail);
+  };
+
+  requestAnimationFrame(animateTrail);
 });
