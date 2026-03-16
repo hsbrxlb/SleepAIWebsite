@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const upgradeClickCards = () => {
     const cardCandidates = Array.from(
-      document.querySelectorAll(".article-card, .feature-summary-card")
+      document.querySelectorAll(".link-card, .link-summary-card")
     );
 
     cardCandidates.forEach((card) => {
@@ -79,8 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.tabIndex = 0;
       card.setAttribute("role", "link");
 
-      const labelSource =
-        card.querySelector("h3 a, strong a, h3, strong") ?? primaryLink;
+      const labelSource = card.querySelector("h3, strong") ?? primaryLink;
       const label = labelSource?.textContent?.trim();
       if (label) {
         card.setAttribute("aria-label", label);
@@ -151,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }));
 
   const interactiveSelector =
-    "a, button, summary, .button, .store-cta-row a, .cta-row a, .is-click-card";
+    "a, button, summary, .button, .mini-cta, .is-click-card";
 
   const setHoverState = (isHovering) => {
     trailRoot.classList.toggle("is-hovering", isHovering);
