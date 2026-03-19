@@ -803,13 +803,13 @@ details p,
 
 .hero-typewriter-cursor {
   display: inline-block;
-  width: 0.08em;
+  width: 2px;
   height: 1.02em;
-  margin-left: 0.14em;
+  margin-left: 5px;
   transform: translateY(0.12em);
   border-radius: 999px;
   background: rgba(255, 224, 178, 0.92);
-  box-shadow: 0 0 14px rgba(255, 214, 149, 0.22);
+  box-shadow: 0 0 16px rgba(255, 214, 149, 0.28);
   animation: hero-cursor-blink 1.15s ease-in-out infinite;
 }
 

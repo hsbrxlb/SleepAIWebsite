@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (prefersReducedMotion.matches) {
       dynamicNode.textContent = fallbackWord;
       if (cursorNode instanceof HTMLElement) {
-        cursorNode.setAttribute("aria-hidden", "true");
+        cursorNode.hidden = true;
       }
       return;
     }
