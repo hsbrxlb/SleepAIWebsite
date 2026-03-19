@@ -1,6 +1,62 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("has-motion");
 
+  const initHeroTypewriter = (prefersReducedMotion) => {
+    const dynamicNode = document.querySelector(".hero-typewriter-dynamic");
+    const cursorNode = document.querySelector(".hero-typewriter-cursor");
+
+    if (!(dynamicNode instanceof HTMLElement)) return;
+
+    const words = (dynamicNode.dataset.typewriterWords ?? "")
+      .split("|")
+      .map((word) => word.trim())
+      .filter(Boolean);
+
+    if (!words.length) return;
+
+    const fallbackWord = words[0];
+
+    if (prefersReducedMotion.matches) {
+      dynamicNode.textContent = fallbackWord;
+      if (cursorNode instanceof HTMLElement) {
+        cursorNode.setAttribute("aria-hidden", "true");
+      }
+      return;
+    }
+
+    const typeSpeed = 72;
+    const deleteSpeed = 36;
+    const wordPause = 1120;
+    const startDelay = 680;
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const tick = () => {
+      const currentWord = words[wordIndex];
+      const nextLength = isDeleting ? charIndex - 1 : charIndex + 1;
+      charIndex = Math.max(0, Math.min(currentWord.length, nextLength));
+      dynamicNode.textContent = currentWord.slice(0, charIndex);
+
+      let delay = isDeleting ? deleteSpeed : typeSpeed;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        delay = wordPause;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        delay = 320;
+      }
+
+      window.setTimeout(tick, delay);
+    };
+
+    dynamicNode.textContent = "";
+    window.setTimeout(tick, startDelay);
+  };
+
   const revealTargets = Array.from(
     document.querySelectorAll(".section, .quote-band-inner, .page-hero-copy")
   );
@@ -111,6 +167,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const finePointer = window.matchMedia("(pointer: fine)");
+
+  initHeroTypewriter(prefersReducedMotion);
 
   if (prefersReducedMotion.matches || !finePointer.matches) {
     return;
