@@ -792,6 +792,8 @@ details p,
 }
 
 .hero-typewriter-prefix {
+  display: inline-block;
+  margin-right: 0.18em;
   color: rgba(255, 236, 208, 0.72);
 }
 
