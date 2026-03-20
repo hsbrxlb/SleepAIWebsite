@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const initHeroTypewriter = (prefersReducedMotion) => {
     const dynamicNode = document.querySelector(".hero-typewriter-dynamic");
-    const cursorNode = document.querySelector(".hero-typewriter-cursor");
 
     if (!(dynamicNode instanceof HTMLElement)) return;
 
@@ -18,9 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (prefersReducedMotion.matches) {
       dynamicNode.textContent = fallbackWord;
-      if (cursorNode instanceof HTMLElement) {
-        cursorNode.hidden = true;
-      }
       return;
     }
 
