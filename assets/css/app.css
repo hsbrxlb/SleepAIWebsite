@@ -98,64 +98,225 @@
 .app-featured-card {
   display: grid;
   gap: 18px;
-  padding: 22px;
-  border-radius: 26px;
+  padding: 24px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(22, 18, 21, 0.94), rgba(24, 20, 23, 0.82)),
+    linear-gradient(180deg, var(--app-surface), var(--app-surface-2));
 }
 
 .app-featured-cover {
   position: relative;
   overflow: hidden;
-  min-height: 220px;
+  min-height: 248px;
   border-radius: 22px;
   background:
-    radial-gradient(circle at 30% 24%, rgba(255, 215, 166, 0.18), transparent 28%),
-    linear-gradient(180deg, rgba(33, 28, 29, 0.96), rgba(15, 14, 19, 0.98));
+    radial-gradient(circle at 24% 26%, rgba(255, 214, 154, 0.16), transparent 28%),
+    radial-gradient(circle at 70% 14%, rgba(113, 108, 194, 0.1), transparent 26%),
+    linear-gradient(180deg, rgba(35, 29, 31, 0.98), rgba(13, 12, 18, 1));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -40px 80px rgba(0, 0, 0, 0.28);
+}
+
+.app-featured-cover::before,
+.app-featured-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.app-featured-cover::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 0, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.022) 0, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 84%);
+  opacity: 0.28;
+}
+
+.app-featured-cover::after {
+  inset: -10% -30%;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255, 226, 181, 0.08) 42%, rgba(255, 199, 120, 0.2) 50%, rgba(255, 226, 181, 0.08) 58%, transparent 100%);
+  transform: translateX(-42%) skewX(-20deg);
+  filter: blur(4px);
+  animation: app-featured-sweep 6.4s ease-in-out infinite;
 }
 
 .app-featured-glow {
   position: absolute;
-  inset: auto auto -24px -16px;
-  width: 180px;
-  height: 180px;
+  inset: auto auto -44px -10px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 189, 110, 0.48), rgba(255, 189, 110, 0));
-  filter: blur(18px);
+  background:
+    radial-gradient(circle, rgba(255, 191, 111, 0.48) 0%, rgba(255, 191, 111, 0.2) 34%, rgba(255, 191, 111, 0) 72%);
+  filter: blur(22px);
+  animation: app-featured-bloom 4.8s ease-in-out infinite;
+}
+
+.app-featured-pulse {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 78px;
+  height: 78px;
+  pointer-events: none;
+}
+
+.app-featured-pulse::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 239, 213, 1), rgba(255, 189, 110, 0.92));
+  box-shadow:
+    0 0 0 6px rgba(255, 189, 110, 0.08),
+    0 0 20px rgba(255, 189, 110, 0.48);
+  transform: translate(-50%, -50%);
+}
+
+.app-featured-pulse span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 213, 155, 0.22);
+  border-radius: 50%;
+  animation: app-featured-ring 3.8s ease-out infinite;
+}
+
+.app-featured-pulse span:nth-child(2) {
+  animation-delay: 1.1s;
+}
+
+.app-featured-pulse span:nth-child(3) {
+  animation-delay: 2.2s;
+}
+
+.app-featured-scan {
+  position: absolute;
+  inset: auto 24px 118px 24px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 226, 181, 0.52) 18%, rgba(255, 197, 116, 0.92) 50%, rgba(255, 226, 181, 0.52) 82%, rgba(255, 255, 255, 0));
+  box-shadow:
+    0 0 18px rgba(255, 193, 113, 0.44),
+    0 0 32px rgba(255, 193, 113, 0.18);
+  transform-origin: center;
+  animation: app-featured-scanline 3.6s ease-in-out infinite;
 }
 
 .app-featured-wave {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
-  left: 24px;
+  right: 22px;
+  bottom: 22px;
+  left: 22px;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: end;
-  gap: 8px;
-  min-height: 72px;
+  gap: 10px;
+  min-height: 108px;
+}
+
+.app-featured-wave::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 210, 149, 0.14), rgba(255, 210, 149, 0.58), rgba(255, 210, 149, 0.14));
+  box-shadow: 0 0 18px rgba(255, 196, 117, 0.18);
 }
 
 .app-featured-wave span {
+  position: relative;
   display: block;
-  min-height: 18px;
+  height: 28px;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 228, 184, 0.92), rgba(255, 181, 92, 0.3));
-  animation: app-wave-rise 1.8s ease-in-out infinite;
+  background:
+    linear-gradient(180deg, rgba(255, 236, 202, 0.98), rgba(255, 204, 136, 0.92) 44%, rgba(199, 132, 58, 0.42) 100%);
+  box-shadow:
+    0 0 22px rgba(255, 194, 111, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  transform-origin: center bottom;
+  animation: app-wave-rise 1.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.app-featured-wave span::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 12%;
+  left: 12%;
+  height: 28%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 248, 230, 0.84), rgba(255, 255, 255, 0));
+  opacity: 0.82;
+}
+
+.app-featured-wave span:nth-child(1) {
+  height: 16px;
+  animation-delay: -1.12s;
 }
 
 .app-featured-wave span:nth-child(2) {
-  animation-delay: 0.12s;
+  height: 34px;
+  animation-delay: -0.44s;
 }
 
 .app-featured-wave span:nth-child(3) {
-  animation-delay: 0.24s;
+  height: 24px;
+  animation-delay: -1.4s;
 }
 
 .app-featured-wave span:nth-child(4) {
-  animation-delay: 0.36s;
+  height: 58px;
+  animation-delay: -0.82s;
 }
 
 .app-featured-wave span:nth-child(5) {
-  animation-delay: 0.48s;
+  height: 76px;
+  animation-delay: -1.9s;
+}
+
+.app-featured-wave span:nth-child(6) {
+  height: 44px;
+  animation-delay: -0.26s;
+}
+
+.app-featured-wave span:nth-child(7) {
+  height: 92px;
+  animation-delay: -1.54s;
+}
+
+.app-featured-wave span:nth-child(8) {
+  height: 54px;
+  animation-delay: -0.7s;
+}
+
+.app-featured-wave span:nth-child(9) {
+  height: 72px;
+  animation-delay: -1.24s;
+}
+
+.app-featured-wave span:nth-child(10) {
+  height: 38px;
+  animation-delay: -0.14s;
+}
+
+.app-featured-wave span:nth-child(11) {
+  height: 28px;
+  animation-delay: -1.72s;
+}
+
+.app-featured-wave span:nth-child(12) {
+  height: 20px;
+  animation-delay: -0.96s;
 }
 
 .app-featured-copy {
@@ -582,12 +743,77 @@
 @keyframes app-wave-rise {
   0%,
   100% {
-    transform: scaleY(0.36);
-    opacity: 0.6;
+    transform: scaleY(0.52) translateY(0);
+    opacity: 0.54;
+  }
+
+  35% {
+    transform: scaleY(1.02) translateY(-2px);
+    opacity: 0.94;
+  }
+
+  60% {
+    transform: scaleY(1.26) translateY(-4px);
+    opacity: 1;
+  }
+
+  82% {
+    transform: scaleY(0.72) translateY(1px);
+    opacity: 0.72;
+  }
+}
+
+@keyframes app-featured-sweep {
+  0%,
+  100% {
+    transform: translateX(-42%) skewX(-20deg);
+    opacity: 0.28;
   }
 
   50% {
-    transform: scaleY(1);
+    transform: translateX(22%) skewX(-20deg);
+    opacity: 0.82;
+  }
+}
+
+@keyframes app-featured-bloom {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.78;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes app-featured-ring {
+  0% {
+    transform: scale(0.34);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.92;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes app-featured-scanline {
+  0%,
+  100% {
+    transform: translateY(0) scaleX(0.66);
+    opacity: 0.34;
+  }
+
+  50% {
+    transform: translateY(-10px) scaleX(1);
     opacity: 1;
   }
 }
@@ -627,6 +853,35 @@
     padding: 20px;
   }
 
+  .app-featured-card {
+    padding: 18px;
+  }
+
+  .app-featured-cover {
+    min-height: 214px;
+  }
+
+  .app-featured-pulse {
+    top: 16px;
+    right: 16px;
+    width: 62px;
+    height: 62px;
+  }
+
+  .app-featured-scan {
+    right: 18px;
+    bottom: 104px;
+    left: 18px;
+  }
+
+  .app-featured-wave {
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+    gap: 7px;
+    min-height: 92px;
+  }
+
   .app-email-form {
     grid-template-columns: 1fr;
   }
@@ -642,6 +897,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .app-featured-cover::after,
+  .app-featured-glow,
+  .app-featured-pulse span,
+  .app-featured-scan,
   .app-featured-wave span {
     animation: none;
   }
