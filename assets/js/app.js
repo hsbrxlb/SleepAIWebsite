@@ -316,7 +316,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const accountStatusText = document.getElementById("account-status-text");
   const rewardNote = document.getElementById("reward-note");
   const rewardClaim = document.getElementById("reward-claim");
-  const priceButtons = Array.from(document.querySelectorAll("[data-plan]"));
 
   const createDefaultState = () => ({
     email: "",
@@ -954,25 +953,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const activatePlan = (plan) => {
-    if (!state.email) {
-      emailInput.focus();
-      showToast("Enter your email first.");
-      return;
-    }
-
-    trackEvent("checkout_started", { plan });
-    state.entitlement = {
-      plan,
-      source: "web_checkout",
-      expiresAt: plan === "monthly" ? Date.now() + 30 * 24 * 60 * 60 * 1000 : Date.now() + 365 * 24 * 60 * 60 * 1000,
-    };
-    saveState();
-    trackEvent("checkout_completed", { plan });
-    renderAll();
-    showToast(plan === "yearly" ? "Yearly access unlocked." : "Monthly access unlocked.");
-  };
-
   const handleQueryParams = () => {
     const params = new URLSearchParams(window.location.search);
     const requestedMode = params.get("mode");
@@ -1050,12 +1030,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (reward) {
       claimReward(reward);
     }
-  });
-
-  priceButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      activatePlan(button.dataset.plan);
-    });
   });
 
   heroPrimary.addEventListener("click", () => {
