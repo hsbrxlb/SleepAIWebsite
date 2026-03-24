@@ -1,6 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("has-motion");
 
+  const initGlobalAppNav = () => {
+    const pathname = window.location.pathname;
+    const cleanPath = pathname.replace(/\/index\.html$/, "/").replace(/\/+$/, "/");
+    const segments = cleanPath.split("/").filter(Boolean);
+    const fileDepth = Math.max(0, segments.length - 1);
+    const relativePrefix = fileDepth === 0 ? "" : "../".repeat(fileDepth);
+    const appHref = `${relativePrefix}app/index.html`;
+    const normalizedPath = window.location.pathname
+      .replace(/index\.html$/, "")
+      .replace(/\/+$/, "") || "/";
+    const navs = Array.from(document.querySelectorAll(".nav"));
+
+    navs.forEach((nav) => {
+      if (
+        nav.querySelector('[data-app-nav="true"]') ||
+        Array.from(nav.querySelectorAll("a")).some((link) => {
+          const href = link.getAttribute("href") || "";
+          return href === "/app/" || href === "/app" || /\/app\/?$/.test(href);
+        })
+      ) {
+        return;
+      }
+
+      const appLink = document.createElement("a");
+      appLink.href = appHref;
+      appLink.textContent = "App";
+      appLink.dataset.appNav = "true";
+
+      if (normalizedPath === "/app") {
+        appLink.setAttribute("aria-current", "page");
+      }
+
+      const compareLink = Array.from(nav.querySelectorAll("a")).find((link) =>
+        /compare/i.test(link.textContent || "")
+      );
+
+      if (compareLink) {
+        nav.insertBefore(appLink, compareLink);
+      } else {
+        nav.appendChild(appLink);
+      }
+    });
+  };
+
+  initGlobalAppNav();
+
   const initHeroTypewriter = (prefersReducedMotion) => {
     const dynamicNode = document.querySelector(".hero-typewriter-dynamic");
 
