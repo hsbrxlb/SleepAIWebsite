@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pufflo Web App | Calm Audio for Work, Reset, and Wind-down</title>
-  <meta name="description" content="Open Pufflo in the browser for ambient focus audio, quick reset sessions, and gentler wind-down routines with web login, rewards, and subscription-ready checkout surfaces.">
-  <meta name="keywords" content="web app calm audio, focus soundscapes, quick reset breathing, wind-down routine, Pufflo web app">
+  <title>Pufflo Web App | Ambient Sound And Quick Calm</title>
+  <meta name="description" content="Listen to ambient sound, short guided resets, and soft wind-down sessions in Pufflo's browser app.">
+  <meta name="keywords" content="ambient sound web app, focus sound, quick calm, reset breathing, pufflo app">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://sleepai.com/app">
-  <meta property="og:title" content="Pufflo Web App | Calm Audio for Work, Reset, and Wind-down">
-  <meta property="og:description" content="A lighter Pufflo experience for screen-time moments: ambient focus, quick resets, and warm wind-down sessions in the browser.">
+  <meta property="og:title" content="Pufflo Web App | Ambient Sound And Quick Calm">
+  <meta property="og:description" content="Ambient sound for work and study, plus short calm sessions when the day feels too bright.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sleepai.com/app">
   <meta property="og:site_name" content="Pufflo by SleepAI">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pufflo Web App">
-  <meta name="twitter:description" content="Ambient-first calm audio for work, study, browsing, gaming, and wind-down.">
-  <link rel="stylesheet" href="../assets/css/site.css?v=20260324a">
-  <link rel="stylesheet" href="../assets/css/app.css?v=20260324a">
-  <script defer src="../assets/js/site.js?v=20260324a"></script>
-  <script defer src="../assets/js/app.js?v=20260324a"></script>
+  <meta name="twitter:description" content="Ambient sound and quick calm for the browser.">
+  <link rel="stylesheet" href="../assets/css/site.css?v=20260324b">
+  <link rel="stylesheet" href="../assets/css/app.css?v=20260324b">
+  <script defer src="../assets/js/site.js?v=20260324b"></script>
+  <script defer src="../assets/js/app.js?v=20260324b"></script>
 </head>
 <body class="page page-web-app">
   <div class="site-shell">
@@ -42,123 +42,72 @@
       <section class="app-hero">
         <div class="app-hero-shell">
           <div class="app-hero-copy">
-            <span class="scene-label" id="hero-kicker">Work / Study / Flow</span>
-            <h1 id="hero-title">Keep a softer layer of calm open while the screen stays busy.</h1>
-            <p id="hero-description">Ambient-first listening for work, study, browsing, gaming, and recovery moments, with quick resets when your nervous system needs less friction and less noise.</p>
+            <span class="scene-label" id="hero-kicker">Ambient Sound</span>
+            <h1 id="hero-title">Keep the day softer while the screen stays on.</h1>
+            <p id="hero-description">Start a steady sound bed for work and study, or step into a short calm session when your pace gets too bright.</p>
             <div class="cta-row">
-              <a href="#app-library" class="button button-primary js-hero-primary">Start listening free</a>
-              <a href="index.html?mode=reset&session=reset-arrival-breath" class="button button-secondary js-hero-secondary">Try 3-minute reset</a>
-            </div>
-            <div class="app-chip-row">
-              <span class="meta-pill">Ambient-first</span>
-              <span class="meta-pill">Quick reset</span>
-              <span class="meta-pill">Reward-driven unlocks</span>
-              <span class="meta-pill">Web checkout ready</span>
-            </div>
-            <div class="app-proof-grid">
-              <article class="app-proof-card">
-                <strong>Focus / Relax ambient</strong>
-                <p>Long-running soundscapes designed for desk time and lower-friction screen moments.</p>
-              </article>
-              <article class="app-proof-card">
-                <strong>3 / 10 / 20 minute resets</strong>
-                <p>Short guided breathing and decompression sessions that can fit between tabs and tasks.</p>
-              </article>
-              <article class="app-proof-card">
-                <strong>Wind-down stays in the mix</strong>
-                <p>The 20-minute bedtime ritual remains here as a warm third lane, not the whole product.</p>
-              </article>
+              <a href="#app-library" class="button button-primary js-hero-primary">Start listening</a>
+              <a href="index.html?mode=reset&session=reset-arrival-breath" class="button button-secondary js-hero-secondary">Try a 3-minute reset</a>
             </div>
           </div>
 
-          <aside class="app-live-card">
-            <div class="app-live-topline">
-              <div>
-                <span class="app-live-label">Now open in browser</span>
-                <strong id="live-track-title">Rain Code Window</strong>
+          <aside class="app-featured-card" aria-label="Featured session">
+            <div class="app-featured-cover">
+              <div class="app-featured-glow"></div>
+              <div class="app-featured-wave" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-              <span class="hero-panel-status" aria-hidden="true"></span>
             </div>
-
-            <div class="app-wave" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="app-featured-copy">
+              <span class="app-featured-label">Featured</span>
+              <strong id="live-track-title">Rain Code Window</strong>
+              <p id="live-track-subtitle">A low, warm sound bed for reading, work, and quiet focus.</p>
             </div>
-
-            <div class="app-live-grid">
-              <article>
-                <span>Mode</span>
-                <strong id="live-track-mode">Ambient</strong>
-              </article>
-              <article>
-                <span>Access</span>
-                <strong id="live-track-access">Free preview</strong>
-              </article>
-              <article>
-                <span>Sessions logged</span>
-                <strong id="hero-session-count">0</strong>
-              </article>
-              <article>
-                <span>Current streak</span>
-                <strong id="hero-streak-count">0 days</strong>
-              </article>
-            </div>
-
-            <p class="app-live-note">This first release is intentionally narrow: login, playable audio, rewards, and checkout-ready entitlements. Sleep tracking and deeper AI stay in the mobile product.</p>
-
-            <div class="app-inline-banner" id="hero-entitlement-banner">
-              <strong>Free access active</strong>
-              <span>Complete sessions to earn a 3-day Pro pass, or unlock monthly / yearly access below.</span>
+            <div class="app-featured-meta">
+              <span id="live-track-mode">Ambient</span>
+              <span id="live-track-access">Free</span>
             </div>
           </aside>
         </div>
       </section>
 
-      <section class="app-builder section" id="app-library">
-        <div class="section-header split">
+      <section class="app-stage section" id="app-library">
+        <div class="app-stage-heading">
           <div>
-            <span class="eyebrow">Web App</span>
-            <h2>Three lanes. One lighter product.</h2>
+            <span class="eyebrow">Listen</span>
+            <h2 id="library-title">Focus, read, work.</h2>
           </div>
-          <p>Keep the browser experience tight: ambient loops for screen-time moments, quick guided resets for overload, and a warm wind-down lane for nights that still need more structure.</p>
+          <p id="library-description">Low-distraction sound for the desk, with short calm sessions close by.</p>
         </div>
 
         <div class="app-mode-tabs" role="tablist" aria-label="Playback modes">
-          <button type="button" class="app-mode-tab is-active" data-mode-tab="ambient" role="tab" aria-selected="true">Focus / Relax Ambient</button>
-          <button type="button" class="app-mode-tab" data-mode-tab="reset" role="tab" aria-selected="false">Quick Reset</button>
-          <button type="button" class="app-mode-tab" data-mode-tab="winddown" role="tab" aria-selected="false">Wind-down</button>
+          <button type="button" class="app-mode-tab is-active" data-mode-tab="ambient" role="tab" aria-selected="true">Ambient</button>
+          <button type="button" class="app-mode-tab" data-mode-tab="reset" role="tab" aria-selected="false">Reset</button>
+          <button type="button" class="app-mode-tab app-mode-tab-secondary" data-mode-tab="winddown" role="tab" aria-selected="false">Wind-down</button>
         </div>
 
-        <div class="app-library-layout">
+        <div class="app-stage-shell">
           <div class="app-library-column">
-            <div class="app-library-header">
-              <div>
-                <span class="app-micro-label">Library</span>
-                <h3 id="library-title">Ambient picks for work, study, and quiet browsing.</h3>
-              </div>
-              <p id="library-description">Free previews are open. Pro items keep playing after the preview window if you unlock access.</p>
-            </div>
             <div class="app-track-grid" id="track-grid" aria-live="polite"></div>
           </div>
 
           <aside class="app-player-card" id="player-card">
-            <div class="app-player-topline">
+            <div class="app-player-head">
               <div>
-                <span class="app-micro-label" id="player-mode-label">Ambient</span>
-                <h3 id="player-title">Choose a session to start</h3>
+                <span class="app-player-kicker" id="player-mode-label">Ambient</span>
+                <h3 id="player-title">Choose a session</h3>
               </div>
-              <span class="app-access-pill" id="player-access-pill">Ready</span>
+              <span class="app-access-pill" id="player-access-pill">Free</span>
             </div>
 
-            <p class="app-player-description" id="player-description">Pick any card on the left to start a browser session. Guided tracks can speak aloud when your browser supports speech synthesis.</p>
+            <p class="app-player-description" id="player-description">A steady layer of sound for work, reading, and quiet focus.</p>
 
             <div class="app-player-meta">
               <span id="player-duration">Duration: --</span>
-              <span id="player-runtime">Prototype runtime: --</span>
             </div>
 
             <div class="app-progress-shell" aria-hidden="true">
@@ -168,204 +117,75 @@
             </div>
 
             <div class="app-caption-card">
-              <span class="app-micro-label">Guide</span>
-              <p id="player-caption">No session is active yet.</p>
+              <p id="player-caption">Press play to begin.</p>
             </div>
 
             <div class="cta-row app-player-actions">
-              <button type="button" class="button button-primary" id="play-toggle">Play selected</button>
+              <button type="button" class="button button-primary" id="play-toggle">Play</button>
               <button type="button" class="button button-secondary" id="favorite-toggle">Save</button>
-              <button type="button" class="button button-secondary" id="voice-toggle">Voice on</button>
-            </div>
-
-            <div class="cta-row app-player-actions app-player-actions-secondary">
-              <button type="button" class="button button-secondary" id="complete-session">Finish session</button>
               <button type="button" class="button button-secondary" id="stop-session">Stop</button>
             </div>
 
+            <div class="app-player-subactions">
+              <button type="button" class="app-text-action" id="complete-session">Mark session complete</button>
+            </div>
+
             <div class="app-inline-banner" id="player-status-banner">
-              <strong>Visitor mode</strong>
-              <span>Use the email capture below to save favorites and sync future entitlements.</span>
+              <strong>Free listening</strong>
+              <span>Some sessions open with Pro.</span>
             </div>
           </aside>
         </div>
       </section>
 
-      <section class="section app-system-grid">
-        <article class="app-panel">
-          <div class="app-panel-heading">
-            <span class="eyebrow">Account</span>
-            <h2>Login and keep the state portable.</h2>
+      <section class="section app-unlock-section">
+        <div class="app-stage-heading">
+          <div>
+            <span class="eyebrow">Unlock More</span>
+            <h2>Save your space and open the full library.</h2>
           </div>
-          <p class="app-panel-copy">This static build saves profile, favorites, recent plays, rewards, and entitlements in local storage. The UI is ready to swap to real auth and backend sync.</p>
+          <p>Keep your saved picks, unlock every session, and pick up where you left off.</p>
+        </div>
 
-          <form class="app-email-form" id="email-form">
-            <label for="email-input" class="visually-hidden">Email address</label>
-            <input type="email" id="email-input" name="email" placeholder="Enter your email address" autocomplete="email" required>
-            <button type="submit" class="button button-primary">Continue with email</button>
-          </form>
+        <div class="app-unlock-shell">
+          <div class="app-email-card">
+            <div class="app-email-copy">
+              <span class="app-player-kicker">Email</span>
+              <h3>Stay synced</h3>
+              <p>Use one email to keep your saved sessions and future access together.</p>
+            </div>
 
-          <div class="app-account-summary" id="account-summary">
-            <div>
-              <span>Status</span>
-              <strong>Visitor</strong>
-            </div>
-            <div>
-              <span>Plan</span>
-              <strong>Free</strong>
-            </div>
-            <div>
-              <span>Favorites</span>
-              <strong>0 items</strong>
-            </div>
-            <div>
-              <span>Recent plays</span>
-              <strong>0</strong>
+            <form class="app-email-form" id="email-form">
+              <label for="email-input" class="visually-hidden">Email address</label>
+              <input type="email" id="email-input" name="email" placeholder="Enter your email" autocomplete="email" required>
+              <button type="submit" class="button button-primary">Continue</button>
+            </form>
+
+            <div class="app-status-line">
+              <span id="account-status-text">Free</span>
             </div>
           </div>
-
-          <div class="app-list-block">
-            <div>
-              <span class="app-micro-label">Recent plays</span>
-              <div class="app-token-list" id="recent-list">
-                <span class="app-token app-token-empty">Nothing yet</span>
-              </div>
-            </div>
-            <div>
-              <span class="app-micro-label">Saved favorites</span>
-              <div class="app-token-list" id="favorite-list">
-                <span class="app-token app-token-empty">Nothing saved</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="app-panel">
-          <div class="app-panel-heading">
-            <span class="eyebrow">Rewards</span>
-            <h2>Use incentives as activation, not the whole offer.</h2>
-          </div>
-          <p class="app-panel-copy">The reward system nudges repeated use and migration into the mobile app, instead of training users to wait for permanent freebies.</p>
-
-          <div class="app-reward-grid">
-            <article class="app-reward-card" id="reward-card-pro-pass">
-              <div>
-                <span class="app-micro-label">After 3 completed sessions</span>
-                <h3>3-day Pro pass</h3>
-              </div>
-              <p>Unlock the full web library for three days once the first three sessions are finished.</p>
-              <button type="button" class="button button-secondary" data-claim-reward="three_sessions">Keep going</button>
-            </article>
-
-            <article class="app-reward-card" id="reward-card-mobile-unlock">
-              <div>
-                <span class="app-micro-label">After a 5-day streak</span>
-                <h3>7-day mobile unlock</h3>
-              </div>
-              <p>Use the web product as a warm-up layer, then hand the deeper sleep experience to the app.</p>
-              <button type="button" class="button button-secondary" data-claim-reward="five_day_streak">Build streak</button>
-            </article>
-          </div>
-
-          <details class="app-demo-tools">
-            <summary>Demo tools</summary>
-            <p>Use these only for internal testing to inspect reward states, checkout states, and instrumentation without waiting days.</p>
-            <div class="cta-row">
-              <button type="button" class="button button-secondary" id="demo-three-sessions">Load 3 completions</button>
-              <button type="button" class="button button-secondary" id="demo-five-streak">Load 5-day streak</button>
-              <button type="button" class="button button-secondary" id="reset-demo-state">Reset local state</button>
-            </div>
-          </details>
-        </article>
-
-        <article class="app-panel">
-          <div class="app-panel-heading">
-            <span class="eyebrow">Pricing</span>
-            <h2>Yearly first. Monthly as backup.</h2>
-          </div>
-          <p class="app-panel-copy">This first pass uses the pricing hypothesis from the plan. The checkout controls below currently simulate Stripe completion locally, but the handoff surface is already separated and instrumented.</p>
 
           <div class="app-pricing-grid">
             <article class="app-price-card">
-              <span class="app-micro-label">Monthly</span>
+              <span class="app-player-kicker">Monthly</span>
               <h3>$6.99<span>/month</span></h3>
-              <p>Good for lighter trial and shorter recovery periods.</p>
-              <button type="button" class="button button-secondary" data-plan="monthly">Continue to checkout</button>
+              <p>Good for a shorter stretch.</p>
+              <button type="button" class="button button-secondary" data-plan="monthly">Choose monthly</button>
             </article>
 
             <article class="app-price-card app-price-card-featured">
-              <span class="app-micro-label">Most likely winner</span>
+              <span class="app-player-kicker">Yearly</span>
               <h3>$39.99<span>/year</span></h3>
-              <p>Best fit for a content subscription, lower fees, and better retention.</p>
-              <button type="button" class="button button-primary" data-plan="yearly">Continue to checkout</button>
+              <p>Best for daily listening.</p>
+              <button type="button" class="button button-primary" data-plan="yearly">Choose yearly</button>
             </article>
           </div>
-
-          <div class="app-checklist">
-            <div>
-              <span class="app-micro-label">Included</span>
-              <strong>Full ambient library</strong>
-            </div>
-            <div>
-              <span class="app-micro-label">Included</span>
-              <strong>All reset and wind-down sessions</strong>
-            </div>
-            <div>
-              <span class="app-micro-label">Included</span>
-              <strong>Reward sync and future cross-device entitlements</strong>
-            </div>
-          </div>
-        </article>
-
-        <article class="app-panel app-panel-wide">
-          <div class="app-panel-heading">
-            <span class="eyebrow">Instrumentation</span>
-            <h2>Core events are already wired.</h2>
-          </div>
-          <p class="app-panel-copy">The prototype pushes events into <code>window.dataLayer</code> and mirrors the latest actions below, so product, growth, and engineering can agree on the same funnel language before backend work starts.</p>
-
-          <div class="app-event-grid">
-            <article class="app-event-card">
-              <span class="app-micro-label">Tracked funnel</span>
-              <p>visit, experiment exposed, library mode switch, session selected, play started, preview capped, session completed, reward claimed, checkout started, checkout completed, mobile handoff clicked</p>
-            </article>
-            <article class="app-event-card">
-              <span class="app-micro-label">Latest events</span>
-              <div class="app-event-stream" id="event-stream">
-                <span class="app-token app-token-empty">No events yet</span>
-              </div>
-            </article>
-          </div>
-        </article>
-      </section>
-
-      <section class="section app-handoff-section">
-        <div class="section-header split">
-          <div>
-            <span class="eyebrow">Launch Path</span>
-            <h2>What this prototype is already solving</h2>
-          </div>
-          <p>It gives the team a deployable front-end to test positioning, interaction shape, reward logic, and browser listening behavior before building deeper auth, billing, and sync infrastructure.</p>
         </div>
 
-        <div class="card-grid three">
-          <article class="card">
-            <h3>Already in place</h3>
-            <p>Playable sessions, local account state, entitlements, rewards, A/B hero copy, and funnel events.</p>
-          </article>
-          <article class="card">
-            <h3>Backend swap points</h3>
-            <p>Email auth, Stripe Checkout, server-side entitlement sync, content delivery, and anti-abuse checks for rewards.</p>
-          </article>
-          <article class="card">
-            <h3>Deliberately excluded</h3>
-            <p>Sleep tracking, full AI chat, heavy mobile parity, and any attempt to turn the homepage into the product itself.</p>
-          </article>
-        </div>
-
-        <div class="cta-row app-final-cta-row">
-          <a href="../index.html" class="button button-secondary">Back to marketing site</a>
-          <a href="#" class="button button-primary" id="handoff-to-mobile">Send this access to mobile</a>
+        <div class="app-reward-line" id="reward-line">
+          <p id="reward-note">Finish 3 sessions to unlock 3 days of Pro.</p>
+          <button type="button" class="app-text-action is-hidden" id="reward-claim">Claim reward</button>
         </div>
       </section>
     </main>
@@ -377,24 +197,24 @@
             <div class="brand-mark"><img src="../assets/images/logo.png" alt="Pufflo app icon" loading="lazy"></div>
             <div class="brand-copy">
               <strong>Pufflo Web App</strong>
-              <span>A lighter calm layer for work, reset, and wind-down moments.</span>
+              <span>Ambient sound and short calm for the browser.</span>
             </div>
           </div>
         </div>
         <div>
-          <strong>What It Is</strong>
+          <strong>Listen</strong>
           <ul>
-            <li>Ambient audio in the browser</li>
-            <li>Quick reset sessions</li>
-            <li>Reward-driven upgrade path</li>
+            <li>Ambient sound</li>
+            <li>Quick reset</li>
+            <li>Wind-down</li>
           </ul>
         </div>
         <div>
-          <strong>Next Integrations</strong>
+          <strong>Explore</strong>
           <ul>
-            <li>Stripe Checkout</li>
-            <li>Magic-link email login</li>
-            <li>Cross-device entitlements</li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+            <li><a href="../faq/index.html">FAQ</a></li>
           </ul>
         </div>
       </div>
